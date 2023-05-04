@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort</title>
+</head>
+<body>
+  
+<script>
+    function Sort(arr) {
+    if (arr.length < 2) {
+      return arr;
+    }
+    
+
+    arr = Array.from(new Set(arr));
+    var pivot = arr[arr.length - 1];
+    var left = [];
+    var right = [];
+    
+    for (var i = 0; i < arr.length - 1; i++) {
+      if (arr[i] < pivot) {
+        left.push(arr[i]);
+      } else {
+        right.push(arr[i]);
+      }
+    }
+    
+    return Sort(left).concat(pivot, Sort(right));
+  }
+  
+
+  var unsortedArray = [3, 0, 2, 5,-1, 4, 1, 10, 23, 15, 20, 12];
+  var sortedArray = Sort(unsortedArray);
+  document.write(sortedArray.join(' '));
+</script>
+   
+</body>
+</html>
